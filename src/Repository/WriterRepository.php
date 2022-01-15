@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Writor;
+use App\Entity\Writer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Writor|null find($id, $lockMode = null, $lockVersion = null)
- * @method Writor|null findOneBy(array $criteria, array $orderBy = null)
- * @method Writor[]    findAll()
- * @method Writor[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Writer|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Writer|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Writer[]    findAll()
+ * @method Writer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class WritorRepository extends ServiceEntityRepository
+class WriterRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Writor::class);
+        parent::__construct($registry, Writer::class);
     }
 
     // /**
-    //  * @return Writor[] Returns an array of Writor objects
+    //  * @return Writer[] Returns an array of Writor objects
     //  */
     /*
     public function findByExampleField($value)
