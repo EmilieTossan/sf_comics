@@ -1,0 +1,18 @@
+{% extends "admin/base.html.twig" %}
+{% block title %}Ajouter un éditeur{% endblock %}
+
+{% block main %}
+
+    {{form_start(designerForm)}}
+
+    {{form_label(designerForm.name, 'Nom du dessinateur')}}
+    {{form_widget(designerForm.name)}}
+    
+    {{form_label(designerForm.country, 'Pays d\'origine')}}
+    {{form_widget(designerForm.country)}}
+
+    {{form_widget(designerForm.Enregistrer)}}
+
+    {{form_end(designerForm)}}
+
+{% endblock %}

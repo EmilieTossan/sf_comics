@@ -1,0 +1,33 @@
+{% extends "admin/base.html.twig" %}
+{% block title %}Ajouter une bande dessinée{% endblock %}
+
+{% block main %}
+
+    {{form_start(comicForm)}}
+
+    {{form_label(comicForm.title, 'Titre')}}
+    {{form_widget(comicForm.title)}}
+    
+    {{form_label(comicForm.description, 'Description')}}
+    {{form_widget(comicForm.description)}}
+
+    {{form_label(comicForm.year, 'Année')}}
+    {{form_widget(comicForm.year)}}
+
+    {{form_label(comicForm.licence, 'Licence')}}
+    {{form_widget(comicForm.licence)}}
+
+    {{form_label(comicForm.editor, 'Éditeur')}}
+    {{form_widget(comicForm.editor)}}
+
+    {{form_label(comicForm.writer, 'Auteur')}}
+    {{form_widget(comicForm.writer)}}
+
+    {{form_label(comicForm.designer, 'Dessinateur')}}
+    {{form_widget(comicForm.designer)}}
+
+    {{form_widget(comicForm.Enregistrer)}}
+
+    {{form_end(comicForm)}}
+
+{% endblock %}
