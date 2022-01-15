@@ -25,15 +25,19 @@ class Comic
     private $year;
 
     #[ORM\ManyToOne(targetEntity: Licence::class, inversedBy: 'comic')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $licence;
 
     #[ORM\ManyToOne(targetEntity: Editor::class, inversedBy: 'comic')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $editor;
 
     #[ORM\ManyToOne(targetEntity: Writer::class, inversedBy: 'comic')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $writer;
 
     #[ORM\ManyToOne(targetEntity: Designer::class, inversedBy: 'comic')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private $designer;
 
     #[ORM\OneToMany(mappedBy: 'comic', targetEntity: Image::class)]
