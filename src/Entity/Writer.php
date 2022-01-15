@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\EditorRepository;
+use App\Repository\WriterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EditorRepository::class)]
-class Editor
+#[ORM\Entity(repositoryClass: WriterRepository::class)]
+class Writer
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +21,7 @@ class Editor
     #[ORM\Column(type: 'string', length: 255)]
     private $country;
 
-    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Comics::class)]
+    #[ORM\OneToMany(mappedBy: 'writer', targetEntity: Comics::class)]
     private $comics;
 
     public function __construct()
@@ -70,7 +70,7 @@ class Editor
     {
         if (!$this->comics->contains($comic)) {
             $this->comics[] = $comic;
-            $comic->setEditor($this);
+            $comic->setWriter($this);
         }
 
         return $this;
@@ -80,8 +80,8 @@ class Editor
     {
         if ($this->comics->removeElement($comic)) {
             // set the owning side to null (unless already changed)
-            if ($comic->getEditor() === $this) {
-                $comic->setEditor(null);
+            if ($comic->getWriter() === $this) {
+                $comic->setWriter(null);
             }
         }
 
