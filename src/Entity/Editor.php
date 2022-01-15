@@ -21,12 +21,12 @@ class Editor
     #[ORM\Column(type: 'string', length: 255)]
     private $country;
 
-    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Comics::class)]
-    private $comics;
+    #[ORM\OneToMany(mappedBy: 'editor', targetEntity: Comic::class)]
+    private $comic;
 
     public function __construct()
     {
-        $this->comics = new ArrayCollection();
+        $this->comic = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,26 +59,26 @@ class Editor
     }
 
     /**
-     * @return Collection|Comics[]
+     * @return Collection|Comic[]
      */
-    public function getComics(): Collection
+    public function getComic(): Collection
     {
-        return $this->comics;
+        return $this->comic;
     }
 
-    public function addComic(Comics $comic): self
+    public function addComic(Comic $comic): self
     {
-        if (!$this->comics->contains($comic)) {
-            $this->comics[] = $comic;
+        if (!$this->comic->contains($comic)) {
+            $this->comic[] = $comic;
             $comic->setEditor($this);
         }
 
         return $this;
     }
 
-    public function removeComic(Comics $comic): self
+    public function removeComic(Comic $comic): self
     {
-        if ($this->comics->removeElement($comic)) {
+        if ($this->comic->removeElement($comic)) {
             // set the owning side to null (unless already changed)
             if ($comic->getEditor() === $this) {
                 $comic->setEditor(null);

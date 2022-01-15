@@ -24,12 +24,12 @@ class Licence
     #[ORM\Column(type: 'string', length: 255)]
     private $media;
 
-    #[ORM\OneToMany(mappedBy: 'licence', targetEntity: Comics::class)]
-    private $comics;
+    #[ORM\OneToMany(mappedBy: 'licence', targetEntity: Comic::class)]
+    private $comic;
 
     public function __construct()
     {
-        $this->comics = new ArrayCollection();
+        $this->comic = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,26 +74,26 @@ class Licence
     }
 
     /**
-     * @return Collection|Comics[]
+     * @return Collection|Comic[]
      */
     public function getComics(): Collection
     {
-        return $this->comics;
+        return $this->comic;
     }
 
-    public function addComic(Comics $comic): self
+    public function addComic(Comic $comic): self
     {
-        if (!$this->comics->contains($comic)) {
-            $this->comics[] = $comic;
+        if (!$this->comic->contains($comic)) {
+            $this->comic[] = $comic;
             $comic->setLicence($this);
         }
 
         return $this;
     }
 
-    public function removeComic(Comics $comic): self
+    public function removeComic(Comic $comic): self
     {
-        if ($this->comics->removeElement($comic)) {
+        if ($this->comic->removeElement($comic)) {
             // set the owning side to null (unless already changed)
             if ($comic->getLicence() === $this) {
                 $comic->setLicence(null);

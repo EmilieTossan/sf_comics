@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ComicsRepository;
+use App\Repository\ComicRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ComicsRepository::class)]
-class Comics
+#[ORM\Entity(repositoryClass: ComicRepository::class)]
+class Comic
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,19 +24,19 @@ class Comics
     #[ORM\Column(type: 'integer')]
     private $year;
 
-    #[ORM\ManyToOne(targetEntity: Licence::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: Licence::class, inversedBy: 'comic')]
     private $licence;
 
-    #[ORM\ManyToOne(targetEntity: Editor::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: Editor::class, inversedBy: 'comic')]
     private $editor;
 
-    #[ORM\ManyToOne(targetEntity: Writer::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: Writer::class, inversedBy: 'comic')]
     private $writer;
 
-    #[ORM\ManyToOne(targetEntity: Designer::class, inversedBy: 'comics')]
+    #[ORM\ManyToOne(targetEntity: Designer::class, inversedBy: 'comic')]
     private $designer;
 
-    #[ORM\OneToMany(mappedBy: 'comics', targetEntity: Image::class)]
+    #[ORM\OneToMany(mappedBy: 'comic', targetEntity: Image::class)]
     private $images;
 
     public function __construct()
@@ -145,7 +145,7 @@ class Comics
     {
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
-            $image->setComics($this);
+            $image->setComic($this);
         }
 
         return $this;
@@ -155,8 +155,8 @@ class Comics
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getComics() === $this) {
-                $image->setComics(null);
+            if ($image->getComic() === $this) {
+                $image->setComic(null);
             }
         }
 

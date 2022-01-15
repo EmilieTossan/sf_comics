@@ -22,8 +22,8 @@ class Image
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\ManyToOne(targetEntity: Comics::class, inversedBy: 'images')]
-    private $comics;
+    #[ORM\ManyToOne(targetEntity: Comic::class, inversedBy: 'images')]
+    private $comic;
 
     public function getId(): ?int
     {
@@ -66,14 +66,14 @@ class Image
         return $this;
     }
 
-    public function getComics(): ?Comics
+    public function getComic(): ?Comic
     {
-        return $this->comics;
+        return $this->comic;
     }
 
-    public function setComics(?Comics $comics): self
+    public function setComic(?Comic $comic): self
     {
-        $this->comics = $comics;
+        $this->comic = $comic;
 
         return $this;
     }
