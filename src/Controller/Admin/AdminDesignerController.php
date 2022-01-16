@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DesignerController extends AbstractController
+class AdminDesignerController extends AbstractController
 {
     /**
      * @Route("admin/designers", name="admin_designer_list")
@@ -81,7 +81,7 @@ class DesignerController extends AbstractController
     }
 
     /**
-     * @Route("admin/delete/designer/{id}", name="admin_delete_designer)
+     * @Route("admin/delete/designer/{id}", name="admin_delete_designer")
      */
     public function adminDeleteDesigner(
         $id,

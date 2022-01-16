@@ -5,14 +5,27 @@
 
     {{form_start(designerForm)}}
 
-    {{form_label(designerForm.name, 'Nom du dessinateur')}}
-    {{form_widget(designerForm.name)}}
+    <table>
+        <tr>
+            <td colspan="2"><legend>Ajouter un dessinateur :</legend></td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(designerForm.name, 'Nom du dessinateur', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(designerForm.name, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(designerForm.country, 'Pays d\'origine', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(designerForm.country, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{form_widget(designerForm.Enregistrer, {'attr' : {'class' : 'button'}})}}</td>
+        </tr>
+    </table>
     
-    {{form_label(designerForm.country, 'Pays d\'origine')}}
-    {{form_widget(designerForm.country)}}
-
-    {{form_widget(designerForm.Enregistrer)}}
-
     {{form_end(designerForm)}}
 
 {% endblock %}

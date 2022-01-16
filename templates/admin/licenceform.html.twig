@@ -4,17 +4,31 @@
 {% block main %}
 
     {{form_start(licenceForm)}}
-
-    {{form_label(licenceForm.name, 'Nom de la licence')}}
-    {{form_widget(licenceForm.name)}}
     
-    {{form_label(licenceForm.description, 'Description')}}
-    {{form_widget(licenceForm.description)}}
-
-    {{form_label(licenceForm.media, 'Image')}}
-    {{form_widget(licenceForm.media)}}
-
-    {{form_widget(licenceForm.Enregistrer)}}
+    <table>
+        <tr>
+            <td colspan="2"><legend>Ajouter une licence :</legend></td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(licenceForm.name, 'Nom de la licence', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(licenceForm.name, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(licenceForm.description, 'Description', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(licenceForm.description, {'attr' : {'class' : 'description_field'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(licenceForm.media, 'Image', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(licenceForm.media)}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{form_widget(licenceForm.Enregistrer, {'attr' : {'class' : 'button'}})}}</td>
+        </tr>
+    </table>
 
     {{form_end(licenceForm)}}
 

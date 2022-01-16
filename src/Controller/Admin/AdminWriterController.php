@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Writer;
+use App\Form\WriterType;
 use App\Repository\WriterRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,7 +81,7 @@ class AdminWriterController extends AbstractController
     }
 
     /**
-     * @Route("admin/delete/writer/{id}", name="admin_delete_writer)
+     * @Route("admin/delete/writer/{id}", name="admin_delete_writer")
      */
     public function adminDeleteWriter(
         $id,

@@ -5,28 +5,46 @@
 
     {{form_start(comicForm)}}
 
-    {{form_label(comicForm.title, 'Titre')}}
-    {{form_widget(comicForm.title)}}
-    
-    {{form_label(comicForm.description, 'Description')}}
-    {{form_widget(comicForm.description)}}
-
-    {{form_label(comicForm.year, 'Année')}}
-    {{form_widget(comicForm.year)}}
-
-    {{form_label(comicForm.licence, 'Licence')}}
-    {{form_widget(comicForm.licence)}}
-
-    {{form_label(comicForm.editor, 'Éditeur')}}
-    {{form_widget(comicForm.editor)}}
-
-    {{form_label(comicForm.writer, 'Auteur')}}
-    {{form_widget(comicForm.writer)}}
-
-    {{form_label(comicForm.designer, 'Dessinateur')}}
-    {{form_widget(comicForm.designer)}}
-
-    {{form_widget(comicForm.Enregistrer)}}
+    <table>
+        <tr>
+            <td colspan="2"><legend>Ajouter une bande dessinée :</legend></td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.title, 'Titre', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.title, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.description, 'Description', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.description, {'attr' : {'class' : 'description_field'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.year, 'Année', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.year)}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.licence, 'Licence', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.licence)}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.editor, 'Éditeur', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.editor)}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.writer, 'Auteur', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.writer)}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(comicForm.designer, 'Dessinateur', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(comicForm.designer)}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{form_widget(comicForm.Enregistrer, {'attr' : {'class' : 'button'}})}}</td>
+        </tr>
+    </table>
 
     {{form_end(comicForm)}}
 

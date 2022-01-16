@@ -8,6 +8,7 @@ use App\Repository\LicenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminLicenceController extends AbstractController
@@ -37,7 +38,8 @@ class AdminLicenceController extends AbstractController
      */
     public function adminCreateLicence(
         Request $request, 
-        EntityManagerInterface $entityManagerInterface
+        EntityManagerInterface $entityManagerInterface,
+        SluggerInterface $sluggerInterface
     ){
         $licence = new Licence();
 
@@ -46,6 +48,25 @@ class AdminLicenceController extends AbstractController
         $licenceForm->handleRequest($request);
 
         if($licenceForm->isSubmitted() && $licenceForm->isValid()){
+
+            $licenceFile = $licenceForm->get('media')->getData();
+
+            if($licenceFile){
+
+                $originalFilename = pathinfo($licenceFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $sluggerInterface->slug($originalFilename);
+
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $licenceFile->guessExtension();
+
+                $licenceFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+
+                $licence->setMedia($newFilename);
+            }
+
             $entityManagerInterface->persist($licence);
             $entityManagerInterface->flush();
 
@@ -62,7 +83,8 @@ class AdminLicenceController extends AbstractController
         $id,
         LicenceRepository $licenceRepository,
         Request $request,
-        EntityManagerInterface $entityManagerInterface
+        EntityManagerInterface $entityManagerInterface,
+        SluggerInterface $sluggerInterface
     ){
         $licence = $licenceRepository->find($id);
 
@@ -71,6 +93,25 @@ class AdminLicenceController extends AbstractController
         $licenceForm->handleRequest($request);
 
         if($licenceForm->isSubmitted() && $licenceForm->isValid()){
+
+            $licenceFile = $licenceForm->get('media')->getData();
+
+            if($licenceFile){
+
+                $originalFilename = pathinfo($licenceFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $sluggerInterface->slug($originalFilename);
+
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $licenceFile->guessExtension();
+
+                $licenceFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+
+                $licence->setMedia($newFilename);
+            }
+
             $entityManagerInterface->persist($licence);
             $entityManagerInterface->flush();
 
@@ -81,7 +122,7 @@ class AdminLicenceController extends AbstractController
     }
 
     /**
-     * @Route("admin/delete/licence/{id}", name="admin_delete_licence)
+     * @Route("admin/delete/licence/{id}", name="admin_delete_licence")
      */
     public function adminDeleteLicence(
         $id,

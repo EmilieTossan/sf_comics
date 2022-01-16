@@ -81,7 +81,7 @@ class AdminEditorController extends AbstractController
     }
 
     /**
-     * @Route("admin/delete/editor/{id}", name="admin_delete_editor)
+     * @Route("admin/delete/editor/{id}", name="admin_delete_editor")
      */
     public function adminDeleteEditor(
         $id,

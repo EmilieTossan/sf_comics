@@ -5,19 +5,35 @@
 
     {{form_start(imageForm)}}
 
-    {{form_label(imageForm.src, 'Image')}}
-    {{form_widget(imageForm.src)}}
-    
-    {{form_label(imageForm.title, 'Titre')}}
-    {{form_widget(imageForm.alt)}}
-
-    {{form_label(imageForm.title, 'Alt')}}
-    {{form_widget(imageForm.alt)}}
-
-    {{form_label(imageForm.comic, 'Bande dessinée')}}
-    {{form_widget(imageForm.comic)}}
-
-    {{form_widget(imageForm.Enregistrer)}}
+    <table>
+        <tr>
+            <td colspan="2"><legend>Ajouter une image :</legend></td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(imageForm.src, 'Image', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(imageForm.src, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(imageForm.title, 'Titre', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(imageForm.title, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(imageForm.alt, 'Alt', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(imageForm.alt, {'attr' : {'size' : '22'}})}}
+</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(imageForm.comic, 'Bande dessinée', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(imageForm.comic)}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{form_widget(imageForm.Enregistrer, {'attr' : {'class' : 'button'}})}}</td>
+        </tr>
+    </table>
 
     {{form_end(imageForm)}}
 

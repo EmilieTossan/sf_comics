@@ -84,7 +84,7 @@ class AdminComicController extends AbstractController
     }
 
     /**
-     * @Route("admin/delete/comic/{id}", name="admin_delete_comic)
+     * @Route("admin/delete/comic/{id}", name="admin_delete_comic")
      */
     public function adminDeleteComic(
         $id,

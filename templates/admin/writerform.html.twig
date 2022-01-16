@@ -5,13 +5,26 @@
 
     {{form_start(writerForm)}}
 
-    {{form_label(writerForm.name, 'Nom de l\'écrivain')}}
-    {{form_widget(writerForm.name)}}
-    
-    {{form_label(writerForm.country, 'Pays d\'origine')}}
-    {{form_widget(writerForm.country)}}
-
-    {{form_widget(writerForm.Enregistrer)}}
+    <table>
+        <tr>
+            <td colspan="2"><legend>Ajouter un auteur :</legend></td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(writerForm.name, 'Nom de l\'écrivain', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(writerForm.name, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td style="text-align : end; padding : 5px">{{form_label(writerForm.country, 'Pays d\'origine', {'label_attr' : {'class' : 'label'}})}}</td>
+            <td>{{form_widget(writerForm.country, {'attr' : {'size' : '22'}})}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{form_widget(writerForm.Enregistrer, {'attr' : {'class' : 'button'}})}}</td>
+        </tr>
+    </table>
 
     {{form_end(writerForm)}}
 
