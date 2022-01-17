@@ -9,6 +9,46 @@
 </head>
 <body>
 
+    <nav style="margin-top: 20px">
+        <ul style="display: flex; justify-content: center">
+            <li class="deroulant"><a href="#">Bandes dessinées &ensp;</a>
+                <ul class="sous">
+                    {% for gcomic in gcomics.getAll %}
+                        <li><a href="{{ path('show_comic', {'id' : gcomic.id }) }}">{{gcomic.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#">Auteurs &ensp;</a>
+                <ul class="sous">
+                    {% for gwriter in gwriters.getAll %}
+                        <li><a href="{{ path('show_writer', {'id' : gwriter.id }) }}">{{gwriter.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#">Dessinateurs &ensp;</a>
+                <ul class="sous">
+                    {% for gdesigner in gdesigners.getAll %}
+                        <li><a href="{{ path('show_designer', {'id' : gdesigner.id }) }}">{{gdesigner.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#">Éditeurs &ensp;</a>
+                <ul class="sous">
+                    {% for geditor in geditors.getAll %}
+                        <li><a href="{{ path('show_editor', {'id' : geditor.id }) }}">{{geditor.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="deroulant"><a href="#">Licences &ensp;</a>
+                <ul class="sous">
+                    {% for glicence in glicences.getAll %}
+                        <li><a href="{{ path('show_licence', {'id' : glicence.id }) }}">{{glicence.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
     {% block main %}{% endblock %}
     
 </body>
