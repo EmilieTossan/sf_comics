@@ -1,6 +1,29 @@
-{% extends "front/base.html.twig" %}
-{% block title %}{% endblock %}
+{% extends "admin/base.html.twig" %}
+{% block title %}Dessinateur : {{ designer.name }}{% endblock %}
 
 {% block main %}
-
+    <section style="display: flex; justify-content: center; margin-top: 60px">
+        <div style="text-align: center; width: 500px">
+            <table style=>
+                <td>
+                    <tr><h1 style="margin-bottom: 25px;">Dessinateur :</span> {{ designer.name }} <span style="color: grey">- {{ designer.country }}</span></h1></tr>
+                </td>
+                <td>
+                    <tr><hr></tr>
+                </td>
+                {% for comic in designer.comic %}
+                <td>
+                    <tr>
+                        <img src="{{ asset('media/' ~ comic.images[0].src) }}" alt="{{ comic.images[0].alt }}" title="{{ comic.images[0].title }}" style="vertical-align:middle; width: 150px; margin: 20px; margin-bottom: 30px;">
+                        <h2>
+                            <a href="{{ path('show_comic', {'id' : comic.id }) }}" style="outline: none; text-decoration: none; color: #000; font-size: 16pt">
+                                {{ comic.title }} <span style="color: grey"> - {{ comic.year }}</span>
+                            </a>
+                        </h2>
+                    </tr>
+                </td>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
 {% endblock %}

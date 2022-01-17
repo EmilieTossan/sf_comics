@@ -2,5 +2,28 @@
 {% block title %}Découvrez la liste des éditeurs{% endblock %}
 
 {% block main %}
+    <section style="display: flex; justify-content: center; margin-top: 50vh; transform: translateY(-50%)">
 
+        <table style="border-spacing: 5px;">
+
+            <td>
+                <tr><h1 style="margin-top: auto; margin-bottom: auto; width:220px">Les éditeurs</h1></tr>
+            </td>
+            <td>
+                <tr><hr></tr>
+            </td>
+            <td>
+                <tr>
+                    <div style="text-align: center; width:500px">
+                        {% for editor in editors %}
+                            <p style="margin: 30px"><a href="{{ path('admin_show_editor', {'id' : editor.id }) }}" style="outline: none; text-decoration: none; color: #000; font-size: 16pt">{{ editor.name }} <span style="color: grey"> - {{ editor.country }}</span></a></p>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </tr>
+            </td>
+
+        </table>
+        
+    </section>
 {% endblock %}

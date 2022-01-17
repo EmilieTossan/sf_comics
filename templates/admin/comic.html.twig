@@ -1,7 +1,46 @@
 {% extends "admin/base.html.twig" %}
-{% block title %}
-{% endblock %}
+{% block title %}{{ comic.title }}{% endblock %}
 
 {% block main %}
-
+    <section style="display: flex; justify-content: center; margin-top: 30px">
+        <div style="text-align: center; width: 500px">
+            <table style=>
+                <td>
+                    {% for image in comic.images %}
+                        <tr>
+		                    <img src="{{ asset('media/' ~ image.src) }}" alt="{{ image.alt }}" title="{{ image.title }}" style="height: 150px; margin: 20px;">
+                        </tr>
+	                {% endfor %}
+                </td>
+                <td>
+                    <tr><h1 style="margin-bottom: 25px;">{{ comic.title }} <span style="color: grey"> - {{ comic.year }}</span></h1></tr>
+                </td>
+                <td>
+                    <tr><hr></tr>
+                </td>
+                <td>
+                    <tr>
+                        <p style="text-align: justify;">{{ comic.description }}</p>
+                    </tr>
+                </td>
+                <td>
+                    <tr><p style="text-align: justify; margin-top: 20px"><span style="font-weight:bold">Écrit par :</span><a href="{{ path('admin_show_writer', {'id' : comic.writer.id }) }}" style="outline: none; text-decoration: none; color: #000"> {{ comic.writer.name }} </a><span style="color: grey">- {{ comic.writer.country }}</span></p></tr>
+                </td>
+                <td>
+                    <tr><p style="text-align: justify; margin-top: 10px"><span style="font-weight:bold">Dessiné par :</span><a href="{{ path('admin_show_designer', {'id' : comic.designer.id }) }}" style="outline: none; text-decoration: none; color: #000"> {{ comic.designer.name }} </a><span style="color: grey">- {{ comic.designer.country }}</span></p></tr>
+                </td>
+                <td>
+                    <tr><p style="text-align: justify; margin-top: 10px"><span style="font-weight:bold">Édition :</span><a href="{{ path('admin_show_editor', {'id' : comic.editor.id }) }}" style="outline: none; text-decoration: none; color: #000"> {{ comic.editor.name }} </a><span style="color: grey">- {{ comic.editor.country }}</span></p></tr>
+                </td>
+                <td>
+                    <tr><p><img src="{{ asset('media/' ~ comic.licence.media) }}" alt="logo {{ comic.licence.name }}" title="Logo {{ comic.licence.name }}" style="width: 200px; margin: 20px"></p></tr>
+                </td>
+                <td>
+                    <tr><p style="text-align: justify; margin-top: 10px; margin-bottom: 20px"><span style="font-weight:bold">Licence :</span><a href="{{ path('admin_show_licence', {'id' : comic.licence.id }) }}" style="outline: none; text-decoration: none; color: #000"> {{ comic.licence.name }}</a></p>
+                    <hr>
+                    <p style="text-align: justify;">{{ comic.licence.description }}</p></tr>
+                </td>
+            </table>
+        </div>
+    </section>
 {% endblock %}

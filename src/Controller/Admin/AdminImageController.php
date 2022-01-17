@@ -51,7 +51,7 @@ class AdminImageController extends AbstractController
 
             $entityManagerInterface->flush();
 
-            return $this->redirectToRoute("admin_image_list");
+            return $this->redirectToRoute("admin_comic_list");
         }
 
         return $this->render("admin/imageform.html.twig", ['imageForm' => $imageForm->createView()]);

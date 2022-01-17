@@ -19,7 +19,7 @@ class AdminDesignerController extends AbstractController
     {
         $designers = $designerRepository->findAll();
 
-        return $this->render("admin/comics.html.twig", ['designers' => $designers]);
+        return $this->render("admin/designers.html.twig", ['designers' => $designers]);
     }
 
     /**

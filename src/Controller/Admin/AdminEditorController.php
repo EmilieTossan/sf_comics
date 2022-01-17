@@ -19,7 +19,7 @@ class AdminEditorController extends AbstractController
     {
         $editors = $editorRepository->findAll();
 
-        return $this->render("front/editors.html.twig", ['editors' => $editors]);
+        return $this->render("admin/editors.html.twig", ['editors' => $editors]);
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminEditorController extends AbstractController
     {
         $editor = $editorRepository->find($id);
 
-        return $this->render("front/editor.html.twig", ['editor' => $editor]);
+        return $this->render("admin/editor.html.twig", ['editor' => $editor]);
     }
 
     /**
